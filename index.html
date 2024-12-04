@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixlSMP Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div id="overlay">
+            <div id="password-form">
+                <h2>Passwort</h2>
+                <form onsubmit="checkPassword(); return false;">
+                    <label for="password">Passwort:</label>
+                    <input type="password" id="password" required>
+                    <br>
+                    <input class="pw_submit" type="submit" value="Bestätigen">
+                </form>
+            </div>
+        </div>
+        
+        <!-- Dein Hauptinhalt hier -->
+    <div class="main-content">
+        <div class="top">
+            P i x l S M P
+        </div>
+        <br>
+        <div class="dashboard">
+            <div>
+                <a class="links link_active" href="./index.html">    Übersicht</a> <br>
+                <a class="links" href="./Console.html">    Konsole</a> <br>
+                <a class="links" href="./Auslastung.html">    Auslastung</a> <br>
+                <a class="links" href="./Screenshots.html">    Screenshots</a> <br>
+                <a class="links" href="./Waypoints.html">    Waypoints</a> <br>
+                <a class="links" href="./SFTP-Server.html">    SFPT-Server</a>
+            </div>
+            <div class="margin"></div>
+            <div>
+                <div class="usage">
+                    Server IP: pixlsmp.hopto.org
+                </div>
+                <div class="usage">
+                    Version: Paper 1.20.1
+                </div>
+
+                <div class="usage" id="tps"></div>
+                <script>
+                function updateTPS() {
+                    fetch('tps.php') // Passe dies an, um auf dein PHP-Skript zuzugreifen
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('tps').innerText = 'TPS: ' + data;
+                        });
+                }
+                setInterval(updateTPS, 1);
+                </script>
+                <br>
+
+                <div class="usage" id="playeronline"></div>
+                <script>
+                function updatePlayeronline() {
+                    fetch('playeronline.php') // Passe dies an, um auf dein PHP-Skript zuzugreifen
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('playeronline').innerText = 'Spieler online: ' + data;
+                        });
+                }
+                setInterval(updatePlayeronline, 1);
+                </script>
+                <br>
+
+                <button onclick="reload()" id="stop" class="stop usage" type="submit">Neuladen</button>
+                <script>
+                    function reload() {
+                    fetch('reload.php') // Passe dies an, um auf dein PHP-Skript zuzugreifen
+                    }
+                </script>
+                <br>
+
+                <button onclick="stop()" id="stop" class="stop usage" type="submit">Stoppen</button>
+                <script>
+                    function stop() {
+                    fetch('stop.php') // Passe dies an, um auf dein PHP-Skript zuzugreifen
+                    }
+                </script>
+                <br>
+
+                <button onclick="reboot()" id="reboot" class="stop usage" type="submit">Neustarten</button>
+                <script>
+                    function reboot() {
+                    fetch('reboot.php') // Passe dies an, um auf dein PHP-Skript zuzugreifen
+                    }
+                </script>
+                <div class="margin"></div>
+            </div>
+        </div>
+    </div>
+        <script>
+            // Hier kannst du deine Überprüfungsfunktion einfügen
+            function checkPassword() {
+                var password = document.getElementById('password').value;
+        
+                // Beispiel: Überprüfe, ob das Passwort 'geheim' ist
+                if (password === 'smp') {
+                    // Wenn das Passwort korrekt ist, entferne das Overlay
+                    document.getElementById('overlay').style.display = 'none';
+                } else {
+                    // Andernfalls zeige eine Warnung an
+                    alert('Falsches Passwort. Bitte versuche es erneut.');
+                }
+            }
+        
+            // Zeige das Overlay beim Laden der Seite an
+            window.onload = function() {
+                document.getElementById('overlay').style.display = 'block';
+            };
+        </script>
+    </div>
+</body>
+</html>

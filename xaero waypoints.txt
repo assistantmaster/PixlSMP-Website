@@ -1,0 +1,11 @@
+xaero-waypoint:Dorf:D:-1621:65:1660:1:false:0:Internal-overworld-waypoints
+xaero-waypoint:Iron Farm:I:-1446:70:1744:12:false:0:Internal-overworld-waypoints
+xaero-waypoint:XP Farm:X:-1844:-4:1759:2:false:0:Internal-overworld-waypoints
+xaero-waypoint:Sumpf:S:-2348:64:1254:12:false:0:Internal-overworld-waypoints
+xaero-waypoint:Outpost:O:311:106:1593:2:false:0:Internal-overworld-waypoints
+xaero-waypoint:Korallenriff:K:-2708:63:2048:3:false:0:Internal-overworld-waypoints
+xaero-waypoint:Ocean Monument:O:-1889:63:2351:13:false:0:Internal-overworld-waypoints
+xaero-waypoint:Dorf:D:408:66:2818:13:false:0:Internal-overworld-waypoints
+xaero-waypoint:Spawn:S:-18:79:-49:10:false:0:Internal-overworld-waypoints
+xaero-waypoint:Ruined Portal:P:247:123:340:4:false:0:Internal-overworld-waypoints
+xaero-waypoint:End Portal:E:-1387:-3:-192:2:false:0:Internal-overworld-waypoints

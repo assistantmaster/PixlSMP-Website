@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixlSMP Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <div class="content">
+    <div class="main-content">
+        <div class="top">
+            P i x l S M P
+        </div>
+        <br>
+        <div class="dashboard">
+            <div>
+                <a class="links" href="./index.html">    Übersicht</a> <br>
+                <a class="links" href="./Console.html">    Konsole</a> <br>
+                <a class="links link_active" href="./Auslastung.html">    Auslastung</a> <br>
+                <a class="links" href="./Screenshots.html">    Screenshots</a> <br>
+                <a class="links" href="./Waypoints.html">    Waypoints</a> <br>
+                <a class="links" href="./SFTP-Server.html">    SFPT-Server</a>
+            </div>
+            <div>
+                <div class="usage" id="temperatur"></div>
+                <script>
+                    // Funktion zum Aktualisieren der Temperatur
+                    function updateTemperatur() {
+                        // Führe den Befehl aus und aktualisiere die Anzeige
+                        $.ajax({
+                            url: 'temp.php', // Beispiel-Pfad zu deinem Skript
+                            type: 'GET',
+                            success: function(data) {
+                                $('#temperatur').text('Temperatur: ' + data);
+                            }
+                        });
+                    }
+                    
+                    // Aktualisiere die Temperatur alle 1000 Millisekunden (1 Sekunde)
+                    setInterval(updateTemperatur, 1);
+                    </script>
+                    <br>
+                    <div class="usage" id="htop"></div>
+                    <script>
+                        // Funktion zum Aktualisieren der Temperatur
+                        function updateAuslastung() {
+                            // Führe den Befehl aus und aktualisiere die Anzeige
+                            $.ajax({
+                                url: 'htop.php', // Beispiel-Pfad zu deinem Skript
+                                type: 'GET',
+                                success: function(data) {
+                                    $('#htop').text('Auslastung: ' + data);
+                                }
+                            });
+                        }
+                        
+                        // Aktualisiere die Temperatur alle 1000 Millisekunden (1 Sekunde)
+                        setInterval(updateAuslastung, 1);
+                        </script>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
